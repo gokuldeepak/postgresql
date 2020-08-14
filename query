@@ -1,0 +1,9 @@
+List
+
+SELECT * FROM table_name 
+WHERE condition;
+
+#Delete:
+
+DELETE FROM table_name
+WHERE condition;
