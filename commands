@@ -54,3 +54,7 @@ SET ROLE new_role;
 Allow role_1 to set its role as role_2:
 
 GRANT role_2 TO role_1;
+
+
+# PostgreSQL error: Fatal role "username" does not exist
+sudo -u postgres createuser -s $(whoami); createdb $(whoami)
