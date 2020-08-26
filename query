@@ -7,3 +7,6 @@ WHERE condition;
 
 DELETE FROM table_name
 WHERE condition;
+
+#update
+UPDATE COMPANY SET ADDRESS = 'Texas', SALARY=20000;
