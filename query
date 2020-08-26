@@ -9,4 +9,4 @@ DELETE FROM table_name
 WHERE condition;
 
 #update
-UPDATE COMPANY SET ADDRESS = 'Texas', SALARY=20000;
+UPDATE table_name SET field_name_city = 'Chennai', field_name_unique_id=1465;
