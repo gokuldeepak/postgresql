@@ -58,3 +58,6 @@ GRANT role_2 TO role_1;
 
 # PostgreSQL error: Fatal role "username" does not exist
 sudo -u postgres createuser -s $(whoami); createdb $(whoami)
+
+
+pg_dump -U user_name database > filename.sql
