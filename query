@@ -8,5 +8,9 @@ WHERE condition;
 DELETE FROM table_name
 WHERE condition;
 
-#update
-UPDATE table_name SET field_name_city = 'Chennai', field_name_unique_id=1465;
+#update details
+UPDATE table_name SET field_name_city = 'Chennai' where field_name_unique_id='1465';
+
+
+#update details for multi column
+UPDATE user_master SET pl_leave_balance = '1.78', comp_off = '1.78' where user_id = '369';
