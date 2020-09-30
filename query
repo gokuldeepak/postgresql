@@ -21,3 +21,6 @@ while true; do dig google.com; sleep 1; done
 
 # get ip address of any domain name 
 dig google.com
+
+#using where in for multiple values
+select * from user_list where user_id IN ('123' , '325', '512');
