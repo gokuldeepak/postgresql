@@ -60,6 +60,46 @@ sudo -u postgres createuser -s $(whoami); createdb $(whoami)
 
 pg_dump -U user_name database > filename.sql
 
+#Creating new table
+ CREATE TABLE table_name (
+   column1 datatype(length) column_contraint,
+   column2 datatype(length) column_contraint,
+   column3 datatype(length) column_contraint,
+   table_constraints
+  );
+Constrains: NOT NULL, UNIQUE, PRIMARY KEY, CHECK, FOREIGN KEY
+
+CREATE TABLE accounts (
+	user_id serial PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+        last_login TIMESTAMP 
+);
+
+CREATE TABLE account_roles (
+  user_id INT NOT NULL,
+  role_id INT NOT NULL,
+  grant_date TIMESTAMP,
+  PRIMARY KEY (user_id, role_id),
+  FOREIGN KEY (role_id)
+      REFERENCES roles (role_id),
+  FOREIGN KEY (user_id)
+      REFERENCES accounts (user_id)
+);
+
+#Import data from CSV
+COPY persons(first_name, last_name, dob, email)
+FROM '/home/ubuntu/persons.csv'
+DELIMITER ','
+CSV HEADER;
+
+#Export data to CSV
+COPY persons
+TO '/home/ubuntu/persons.csv'
+DELIMITER ','
+CSV HEADER;
 
 #Delete a particular row
 DELETE FROM devices
@@ -75,3 +115,9 @@ DELETE FROM devices
 where device_id IN(1001,1002,1003)
 returning *;
 
+#Delete from multiple rows using select
+DELETE FROM students WHERE student_id IN (SELECT alumni_id FROM alumni)
+
+
+#export from psql to csv
+copy (Select * from students) To '/tmp/test.csv' With CSV DELIMITER ',' HEADER;
